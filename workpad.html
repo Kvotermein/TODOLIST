@@ -7,13 +7,45 @@
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
 </head>
 	<body>
-		<div class='left-pad-pannel'>
-				
+	<div class="big-container">
+		<div class="left-pad-pannel">
+				<div class="logo">
+					<div class="inner">Tasker ltd</div>
+				</div>
+				<div class="enter-task-field">
+					<input type="text" name="user-task" id="userTask" placeholder="Add something...">
+					<input type="submit" name="addTasks" class="add-task-button" value="->">
+				</div>
+				<ul id="myUL">
+					<li>Meet  Alik</li>
+					<li>Buy bananas</li>
+					<li>Go to the ...</li>
+					<li>Pay appartments</li>
+					<li>Read a book</li>
+					<li>Organize office</li>
+				</ul>
 		</div>
 		<div class="right-pad-pannel">
-			
+			<div class="top-analog-calendar"></div>
+			<div class="date-calendar-clock">
+				<div class="calendar"></div>
+				<div class="clock"></div>
+			</div>
+			<div id="google-map-api"></div>
 		</div>
+	</div>
 	</body>
+	<script>
+		function myMap() {
+		var mapProp= {
+		    center:new google.maps.LatLng(53.772707, 27.681334),
+		    zoom:5,
+		};
+		var map=new google.maps.Map(document.getElementById("google-map-api"),mapProp);
+		}
+	</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqakYsZl-1WSFWu1ZPtinPz88BilUA05Y&callback=myMap"></script>
 </html>
 
 
