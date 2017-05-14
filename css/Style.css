@@ -142,6 +142,7 @@ body {
 #userTask:focus {
 	border: 1px solid black;
 	background-color: rgba(175, 10, 197, 0.36);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 }
 .add-task-button {
 	width: 40px;
@@ -197,7 +198,6 @@ ul li.checked:hover {
 .close:hover {
 	background-color: rgba(1, 48, 125, 0.67);	
 }
-
 
 
 .right-pad-pannel {
