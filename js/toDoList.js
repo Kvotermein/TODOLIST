@@ -36,7 +36,7 @@ function newElement() {
   if (inputValue === '') {
     alert("You must write something!");
   } else {
-    document.getElementById("myUL").appendChild(li);
+    document.getElementById("myUL").insertBefore(li,uLlist.firstChild);
   }
   document.getElementById("userTask").value = "";
 
