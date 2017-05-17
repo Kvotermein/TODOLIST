@@ -2,7 +2,7 @@ body {
 	background-color: #1b001f;
 	background-image: url(../img/bright-squares.png);
 	background-repeat: repeat;
-	position:fixed;
+	position:absolute;
 	width:100%;
 	height:100%;
 }
@@ -204,6 +204,7 @@ ul li.checked:hover {
 
 
 .right-pad-pannel {
+	color: rgb(149, 2, 18);
 	margin-top: 20px;
 	margin-bottom: 20px;
 	margin-left: auto;
@@ -223,12 +224,37 @@ ul li.checked:hover {
 	width: 100%;
 	height: 40%;
 }
-.calendar {
-	width: 50%;
+#calendar {
+	width: 100%;
 	height: 100%;
 }
+table {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	height: calc( 100% - 10px );
+	width: calc( 100% - 20px );
+	border-collapse: collapse;
+}
+
+td,th {
+	border: 1px solid black;
+	padding: 3px;
+	text-align: center;
+}
+
+td:hover {
+	background-color: rgba(85, 5, 96, 0.83);
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+th {
+	font-weight: bold;
+	background-color: rgba(85, 5, 96, 0.43);
+}
 .clock {
-	width: 50%;
+	width: 0%;
 	height: 100%;
 }
 

@@ -23,11 +23,11 @@
   }
 
   function UpdatePage() {
-    
+
     var ShiftX=MouseLastX;
     var ShiftY=MouseLastY;
 
-    ShiftPara('paralax',ShiftX,ShiftY,0.01,0.01);
+    ShiftPara('paralax',ShiftX,ShiftY,-0.01,0.01);
   }
 
   function ShiftPara(ParaId,ShiftX,ShiftY,KoefX,KoefY) {
