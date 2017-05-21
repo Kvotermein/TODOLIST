@@ -234,8 +234,8 @@ table {
 	margin-bottom: 10px;
 	height: calc( 100% - 10px );
 	width: calc( 100% - 20px );
-	border-collapse: collapse;
-}
+/*	border-collapse: collapse;
+*/}
 
 td,th {
 	border: 1px solid black;

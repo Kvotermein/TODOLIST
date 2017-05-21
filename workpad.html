@@ -17,7 +17,6 @@
 						<input type="submit" name="addTasks" class="add-task-button" value="->" onclick="newElement()">
 					</div>
 					<ul id="myUL">
-						<li>weqwe</li>
 					</ul>
 			</div>
 			<div class="right-pad-pannel">
@@ -29,17 +28,28 @@
 			</div>
 		</div>
 		<script>
-		function myMap() {
-			var mapProp= {
-			    center:new google.maps.LatLng(53.772707, 27.681334),
-			    zoom:5,
-			};
-			var map=new google.maps.Map(document.getElementById("google-map-api"),mapProp);
-		}
+			function initMap() {
+			  var uluru = {lat: 53.772707, lng: 27.681334};
+			  var map = new google.maps.Map(document.getElementById('google-map-api'), {
+			    zoom: 5,
+			    center: uluru
+			  });
+			  var marker = new google.maps.Marker({
+			    position: uluru,
+			    map: map,
+				draggable:true,
+				title:"Drag me!",
+			  });
+			  google.maps.event.addListener(marker, "dragend", function(event) {
+			    point = marker.getPosition();// новые координаты маркера: point.lat() и point.lng()
+			  	console.log(point.lat(),point.lng())
+			  });
+			}
+
 		</script>
 		<script src="js/calendar.js"></script>
 		<script src="js/toDolist.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqakYsZl-1WSFWu1ZPtinPz88BilUA05Y&callback=myMap"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqakYsZl-1WSFWu1ZPtinPz88BilUA05Y&callback=initMap"></script>
 	</body>
 <!-- 19 august -->
 </html>
