@@ -14,7 +14,7 @@
 					</div>
 					<div class="enter-task-field">
 						<input type="text" name="user-task" id="userTask" placeholder="Add something...">
-						<input type="submit" name="addTasks" class="add-task-button" value="->" onclick="newElement()">
+						<input type="submit" name="addTasks" class="add-task-button" value="->" onclick="newElement(point.lat(),point.lng())">
 					</div>
 					<ul id="myUL">
 					</ul>
@@ -28,10 +28,13 @@
 			</div>
 		</div>
 		<script>
+		var point;
+		var map;
 			function initMap() {
-			  var uluru = {lat: 53.772707, lng: 27.681334};
+				self=this;
+			  var uluru = {lat: 53.895889 , lng: 27.554991};
 			  var map = new google.maps.Map(document.getElementById('google-map-api'), {
-			    zoom: 5,
+			    zoom: 9,
 			    center: uluru
 			  });
 			  var marker = new google.maps.Marker({
@@ -40,12 +43,16 @@
 				draggable:true,
 				title:"Drag me!",
 			  });
+			  point = marker.getPosition();
 			  google.maps.event.addListener(marker, "dragend", function(event) {
 			    point = marker.getPosition();// новые координаты маркера: point.lat() и point.lng()
 			  	console.log(point.lat(),point.lng())
+				setTimeout(function() { map.panTo(new google.maps.LatLng(point.lat(),point.lng())); }, 5000);
 			  });
+
 			}
 
+			setTimeout(function() {console.log(point.lat(),point.lng())}, 200);
 		</script>
 		<script src="js/calendar.js"></script>
 		<script src="js/toDolist.js"></script>

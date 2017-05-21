@@ -1,11 +1,20 @@
 'use strict'
 let TasksArray=[];
+let TaskHash={};
+class Task {
+  constructor(task,coordx,coordy) {
+    this.task = task;
+    this.coordx= coordx;
+    this.coordy= coordy;
+  }
+}
 function loadBitch() {
   if (TasksArray.length!==0) {
     for (var i = 0; i < TasksArray.length; i++) {
       TasksArray[i]
+      console.log(TasksArray[i])
       var li = document.createElement("li");;
-      var t = document.createTextNode(TasksArray[i]);
+      var t = document.createTextNode(TasksArray[i].task);
       li.appendChild(t);
       document.getElementById("myUL").insertBefore(li,uLlist.firstChild);
       var span = document.createElement("SPAN");
@@ -13,10 +22,19 @@ function loadBitch() {
       span.className = "close";
       span.appendChild(txt);
       li.appendChild(span);
-      console.log(TasksArray)     
+    }
+  }
+    for (var i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      uLlist.removeChild(div)
+      var a=TasksArray.indexOf(div.textContent);
+      TasksArray.splice(a,1);
+      console.log(TasksArray)
     }
   }
 }
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 for (var i = 0; i < myNodelist.length; i++) {
@@ -54,7 +72,7 @@ list.addEventListener('click', function(ev) {
 }, false);
 
 // Create a new list item when clicking on the "Add" button
-function newElement() {
+function newElement(posX,posY) {
   var li = document.createElement("li");
   var inputValue = document.getElementById("userTask").value;
   var t = document.createTextNode(inputValue);
@@ -73,8 +91,12 @@ function newElement() {
   var textInTastk=li.textContent
   var textInTastklength=textInTastk.length
   var x=textInTastk.substring(0, textInTastklength - 1)
-  TasksArray.push(x)
-  // TasksArray.push(li.textContent);
+
+  let user = new Task ();
+  user.task=x;
+  user.coordx=posX;
+  user.coordy=posY;
+  TasksArray.push(user)
   console.log(TasksArray)
 
   for (var i = 0; i < close.length; i++) {
@@ -95,7 +117,7 @@ function ready() {
      TasksArray=inarr;
      console.log(inarr);
     }
-    loadBitch() 
+    loadBitch()
   }
 
   document.addEventListener("DOMContentLoaded", ready);
@@ -105,37 +127,3 @@ window.onbeforeunload = function() {
         window.localStorage.setItem('lsName',arr);
 };
 
-// function start() {
-// var StoredName=window.localStorage.getItem('lsName');
-// if ( StoredName )
-//     document.getElementById('IName').value=StoredName;
-
-// var StoredAge=window.localStorage.getItem('lsAge');
-// if ( StoredAge )
-//     document.getElementById('IAge').value=StoredAge;
-// }
-
-// function Store()
-// {
-//     window.localStorage.setItem('lsName',document.getElementById('IName').value);
-//     window.localStorage.setItem('lsAge',document.getElementById('IAge').value);
-// }
-//     var BeatlesH=
-//     {
-//         name : 'Beatles',
-//         members : [ 'McCartney', 'Lennon', 'Harrison', 'Starr' ],
-//         albums:
-//         [
-//             { name : 'Please Please Me', year : 1963 },
-//             { name : 'With The Beatles', year : 1963 },
-//             { name : "A Hard Day's Night", year : 1964 }
-//         ]
-//     };
-
-//     var Beatles2H=JSON.parse(JSON.stringify(BeatlesH));
-
-//     Beatles2H.name="The Beatles";
-//     Beatles2H.members[1]='John Lennon';
-
-//     console.log( BeatlesH );
-//     console.log( Beatles2H );

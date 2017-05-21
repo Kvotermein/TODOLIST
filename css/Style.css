@@ -264,4 +264,5 @@ th {
 	margin-bottom: 10px;
 	width: calc( 100% - 20px );
 	height: calc( 50% - 10px );
+	border-radius: 5px;
 }
