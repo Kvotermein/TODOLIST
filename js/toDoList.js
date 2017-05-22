@@ -1,19 +1,20 @@
 'use strict'
 let TasksArray=[];
-let TaskHash={};
+let count=0;
 class Task {
-  constructor(task,coordx,coordy) {
+  constructor(task,coordx,coordy,uniqNumber) {
+    this.uniqNumber=uniqNumber;
     this.task = task;
-    this.coordx= coordx;
-    this.coordy= coordy;
+    this.coordx = coordx;
+    this.coordy = coordy;
   }
 }
-function loadBitch() {
+function loadall() {
   if (TasksArray.length!==0) {
     for (var i = 0; i < TasksArray.length; i++) {
-      TasksArray[i]
       console.log(TasksArray[i])
       var li = document.createElement("li");;
+      li.id = i;
       var t = document.createTextNode(TasksArray[i].task);
       li.appendChild(t);
       document.getElementById("myUL").insertBefore(li,uLlist.firstChild);
@@ -28,52 +29,54 @@ function loadBitch() {
     close[i].onclick = function() {
       var div = this.parentElement;
       uLlist.removeChild(div)
-      var a=TasksArray.indexOf(div.textContent);
-      TasksArray.splice(a,1);
+      for (var i = 0; i < TasksArray.length; i++) {
+        if (String(i)===div.id) {
+          console.log(i)
+          TasksArray.splice(i,1);
+        }
+      }
       console.log(TasksArray)
+    }
+  }
+  var LiElm = document.getElementsByTagName("LI");
+  for (var i = 0; i < LiElm.length; i++) {
+    LiElm[i].onclick = function() {
+      var div = this;
+      for (var i = 0; i < TasksArray.length; i++) {
+        if (String(i)===div.id) {
+          console.log(i)
+          var x=TasksArray[i].coordx.toFixed(6);
+          var y=TasksArray[i].coordy.toFixed(6);
+        setTimeout(function() { 
+          map.panTo(new google.maps.LatLng(x,y));
+          map.setZoom(15)
+          marker.setPosition(new google.maps.LatLng(x,y));
+        }, 300);
+        }
+      }
     }
   }
 }
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-for (var i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-  var textInTastk=myNodelist[i].textContent
-  var textInTastklength=textInTastk.length
-  var x=textInTastk.substring(0, textInTastklength - 1)
-  TasksArray.push(x)
-  console.log(TasksArray)
-}
-
-// Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
 var uLlist= document.getElementById("myUL")
-for (var i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    uLlist.removeChild(div);
-    var a=TasksArray.indexOf(div.textContent);
-    TasksArray.splice(a,1);
-    console.log(TasksArray)
-  }
-}
+
+
 
 // Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
+// var list = document.querySelector('ul');
+// list.addEventListener('click', function(ev) {
+//   if (ev.target.tagName === 'LI') {
+//     ev.target.classList.toggle('checked');
+//   }
+// }, false);
 
 // Create a new list item when clicking on the "Add" button
 function newElement(posX,posY) {
   var li = document.createElement("li");
+  for (var i = 0; i <= TasksArray.length; i++) {
+    li.id=i;
+  }
   var inputValue = document.getElementById("userTask").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
@@ -92,10 +95,7 @@ function newElement(posX,posY) {
   var textInTastklength=textInTastk.length
   var x=textInTastk.substring(0, textInTastklength - 1)
 
-  let user = new Task ();
-  user.task=x;
-  user.coordx=posX;
-  user.coordy=posY;
+  let user = new Task (x,posX,posY,count++);
   TasksArray.push(user)
   console.log(TasksArray)
 
@@ -103,12 +103,35 @@ function newElement(posX,posY) {
     close[i].onclick = function() {
       var div = this.parentElement;
       uLlist.removeChild(div)
-      var a=TasksArray.indexOf(div.textContent);
-      TasksArray.splice(a,1);
+      for (var i = 0; i < TasksArray.length; i++) {
+        if (String(i)===div.id) {
+          console.log(i)
+          TasksArray.splice(i,1);
+        }
+      }
       console.log(TasksArray)
     }
   }
+  var LiElm = document.getElementsByTagName("LI");
+  for (var i = 0; i < LiElm.length; i++) {
+    LiElm[i].onclick = function() {
+      var div = this;
+      for (var i = 0; i < TasksArray.length; i++) {
+        if (String(i)===div.id) {
+          console.log(i)
+          var x=TasksArray[i].coordx.toFixed(6);
+          var y=TasksArray[i].coordy.toFixed(6);
+          setTimeout(function() { 
+          map.panTo(new google.maps.LatLng(x,y));
+          marker.setPosition(new google.maps.LatLng(x,y))
+          }, 300);
+        }
+      }
+    }
+  }  
 }
+
+
 function ready() {
 
   var getcont=window.localStorage.getItem('lsName');
@@ -117,7 +140,7 @@ function ready() {
      TasksArray=inarr;
      console.log(inarr);
     }
-    loadBitch()
+    loadall()
   }
 
   document.addEventListener("DOMContentLoaded", ready);
