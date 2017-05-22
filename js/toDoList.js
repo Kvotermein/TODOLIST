@@ -1,6 +1,9 @@
 'use strict'
+let monthTaskHash={};
 let TasksArray=[];
 let count=0;
+let close = document.getElementsByClassName("close");
+let uLlist= document.getElementById("myUL")
 class Task {
   constructor(task,coordx,coordy,uniqNumber) {
     this.uniqNumber=uniqNumber;
@@ -58,8 +61,7 @@ function loadall() {
   }
 }
 
-var close = document.getElementsByClassName("close");
-var uLlist= document.getElementById("myUL")
+
 
 
 
@@ -96,7 +98,8 @@ function newElement(posX,posY) {
   var x=textInTastk.substring(0, textInTastklength - 1)
 
   let user = new Task (x,posX,posY,count++);
-  TasksArray.push(user)
+  TasksArray.push(user);
+  monthTaskHash[today]=TasksArray;
   console.log(TasksArray)
 
   for (var i = 0; i < close.length; i++) {
@@ -123,6 +126,7 @@ function newElement(posX,posY) {
           var y=TasksArray[i].coordy.toFixed(6);
           setTimeout(function() { 
           map.panTo(new google.maps.LatLng(x,y));
+          map.setZoom(15)
           marker.setPosition(new google.maps.LatLng(x,y))
           }, 300);
         }
@@ -131,22 +135,51 @@ function newElement(posX,posY) {
   }  
 }
 
+var tblElemTD = document.getElementsByTagName("TD");
+  for (var i = 0; i < tblElemTD.length; i++) {
+    tblElemTD[i].onclick = function() {
+       var tblElemTD = document.getElementsByTagName("TD");
+        for (var i = 0; i < tblElemTD.length; i++) {
+            tblElemTD[i].style.color='rgb(149, 2, 18)';
+        }
+      var div = this;
+      div.style.color = "blue"
+      console.log(div);
+      while(uLlist.firstChild) uLlist.removeChild(uLlist.firstChild);
+      today=this.textContent;
+      if (monthTaskHash[today]) {
+        TasksArray=monthTaskHash[today]
+      }
+      else TasksArray=[]
+      loadall()
+    }
+  } 
+
 
 function ready() {
 
   var getcont=window.localStorage.getItem('lsName');
     if ( getcont ) {
     var inarr=JSON.parse(getcont)
-     TasksArray=inarr;
+     monthTaskHash=inarr;
      console.log(inarr);
+     if (monthTaskHash[today]) {
+     TasksArray=monthTaskHash[today]
+     }
+     else TasksArray=[]
+     // monthTaskHash[today]=TasksArray;
     }
     loadall()
+
   }
 
   document.addEventListener("DOMContentLoaded", ready);
 
 window.onbeforeunload = function() {
-    var arr=JSON.stringify(TasksArray);
+    for (var key in monthTaskHash) {
+      if (monthTaskHash[key].length===0) {delete monthTaskHash[key]}
+    }
+    var arr=JSON.stringify(monthTaskHash);
         window.localStorage.setItem('lsName',arr);
 };
 

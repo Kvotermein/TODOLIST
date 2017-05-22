@@ -1,10 +1,13 @@
+'use strict'
+let now = new Date();
+let today = now.getDate()
     function createCalendar(id, year, month) {
       var elem = document.getElementById(id);
 
-      var mon = month - 1; // месяцы в JS идут от 0 до 11, а не от 1 до 12
+      var mon = month; // месяцы в JS идут от 0 до 11, а не от 1 до 12
       var d = new Date(year, mon);
 
-      var table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+      var table = '<table id=myTable><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
 
       // заполнить первый ряд от понедельника
       // и до дня, с которого начинается месяц
@@ -43,4 +46,12 @@
       if (day == 0) day = 7;
       return day - 1;
     }
-    createCalendar("calendar", 2017, 5)
+
+    createCalendar("calendar", now.getFullYear(), now.getMonth())
+
+  var tblElemTD = document.getElementsByTagName("TD");
+  for (var i = 0; i < tblElemTD.length; i++) {
+    if (String(today)===tblElemTD[i].textContent) {
+      tblElemTD[i].style.color='blue';
+    }
+  }
