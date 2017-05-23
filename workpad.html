@@ -27,34 +27,7 @@
 				<div id="google-map-api"></div>
 			</div>
 		</div>
-		<script>
-		var point;
-		var map;
-		var marker;
-			function initMap() {
-				self=this;
-			  var uluru = {lat: 53.895889 , lng: 27.554991};
-			  	  map = new google.maps.Map(document.getElementById('google-map-api'), {
-			    zoom: 9,
-			    center: uluru
-			  });
-			    marker = new google.maps.Marker({
-			    position: uluru,
-			    map: map,
-				draggable:true,
-				title:"Drag me!",
-			  });
-			  point = marker.getPosition();
-			  google.maps.event.addListener(marker, "dragend", function(event) {
-			    point = marker.getPosition();// новые координаты маркера: point.lat() и point.lng()
-			  	console.log(point.lat(),point.lng())
-
-			  });
-			}
-				// setTimeout(function() { map.panTo(new google.maps.LatLng(point.lat(),point.lng())); }, 5000);
-
-			setTimeout(function() {console.log(point.lat(),point.lng())}, 400);
-		</script>
+		<script src="js/gglmaps.js"></script>
 		<script src="js/calendar.js"></script>
 		<script src="js/toDolist.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqakYsZl-1WSFWu1ZPtinPz88BilUA05Y&callback=initMap"></script>

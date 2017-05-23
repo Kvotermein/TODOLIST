@@ -144,7 +144,6 @@ var tblElemTD = document.getElementsByTagName("TD");
         }
       var div = this;
       div.style.color = "blue"
-      console.log(div);
       while(uLlist.firstChild) uLlist.removeChild(uLlist.firstChild);
       today=this.textContent;
       if (monthTaskHash[today]) {
