@@ -1,48 +1,51 @@
 body {
-	background-color: #1b001f;
-	background-image: url(../img/bright-squares.png);
-	background-repeat: repeat;
 	position:absolute;
 	width:100%;
 	height:100%;
+	background-color: #1b001f;
+	background-image: url(../img/bright-squares.png);
+	background-repeat: repeat;
 }
 
 .logPanel {
-	width: 330px;
-	height: 220px;
 	position: absolute;
 	left: 50%;
 	top:50%;
-	border-radius: 5px;
+	width: 330px;
+	height: 220px;
 	margin-left: -165px;
 	margin-top: -110px;
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
 	background-color: rgba(17, 10, 18, 0.54);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
+	border-radius: 5px;
 	transition:  1s;
 }
+
 .logPanel:hover {
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 	background-color: rgba(17, 10, 18, 0.74);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 }
 
 /*Авторизация+Регистрация*/
 .head-foot {
-	color: rgb(149, 2, 18);
-	font: bold small-caps 25px book antiqua;
 	position: relative;
 	height: 20%;
+	color: rgb(149, 2, 18);
+	font: bold small-caps 25px book antiqua;
 }
 
 .head-foot:before {
-	content: '';
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
+	content: '';
 }
+
 .inner {
 	display: inline-block;
 	vertical-align: middle;
 }
+
 .head-foot {
 	text-align: center;
 }
@@ -55,71 +58,79 @@ body {
 #send {
 	height: 100%;
 }
-.inpt {
+
+.input {
 	width: 280px;
 	height: 30px;
 	margin: 10px 24px 0px 24px;
+	background-color: rgba(57, 36, 60, 0.43);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
 	border: 1px solid #555;
 	border-radius: 3px;
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
-	background-color: rgba(57, 36, 60, 0.43);
 	outline: none;
 	transition: 0.5s;
 }
-.inpt:focus {
-	border: 1px solid black;
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.90);
+
+.input:focus {
 	background-color: rgba(175, 10, 197, 0.36);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.90);
+	border: 1px solid black;
 }
-.subButt {
-	color: rgb(149, 2, 18);
-	font: bold small-caps 20px book antiqua;
+
+.sub-butt {
 	width: 100px;
 	margin: 15px 115px 0px 115px; 
-	border-radius: 5px;
+	color: rgb(149, 2, 18);
+	font: bold small-caps 20px book antiqua;
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
 	background-color: rgba(75, 2, 10, 0.45);
 	border-width: 0px;
+	border-radius: 5px;
 	transition:  0.4s;
 }
-.subButt:hover {
+
+.sub-butt:hover {
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 	background-color: rgba(75, 2, 10, 0.9);
 }
 
 /*Work-pad*/
-.big-container{
+.big-container {
 	position: absolute;	
 	display: flex;
 	width: 100%;
 	height: auto;
 }
 .left-pad-pannel {
-	color: rgb(149, 2, 18);
+	min-height: calc( 100vh - 40px );
+	width: 45%;
 	margin-top: 20px;
 	margin-left: 10px;
 	margin-bottom: 20px;
-	min-height: calc( 100vh - 40px );
-	width: 45%;
 	overflow: hidden;
 	border-radius: 5px;
+	color: rgb(149, 2, 18);
 	background-color: rgba(17, 10, 18, 0.54);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 }
+
 .logo {
-	font: bold small-caps 45px book antiqua;
 	width: 100%;
 	height: 55px;
+	font: bold small-caps 45px book antiqua;
 }
+
 .logo:before {
-	content: '';
 	display: inline-block;
 	height: 100%;
 	vertical-align: middle;
+	content: '';
 }
+
 .logo {
 	text-align: center;
 }
+
 .enter-task-field {
 	display: flex;
 	width: 100%;
@@ -127,36 +138,40 @@ body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-#userTask {
-	border: none;
+
+#user-task {
 	height: 100%;
 	width: 80%;
 	margin-left: 10px;
 	margin-right: auto;
 	padding: 0px;
 	padding-left: 10px;
-	border-radius: 5px;
 	border: 1px solid #555;
 	background-color: rgba(85, 5, 96, 0.43);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
+	border-radius: 5px;
+	border: none;
 	transition: 0.5s;
 	outline: none;
 }
-#userTask:focus {
-	border: 1px solid black;
+
+#user-task:focus {
 	background-color: rgba(175, 10, 197, 0.36);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
+	border: 1px solid black;
 }
+
 .add-task-button {
 	width: 40px;
 	height: 100%;
+	margin-right: 10px; 
+	background-color: rgba(85, 5, 96, 0.43);
+	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
 	border-radius: 5px;
 	border: 1px solid #555;
-	margin-right: 10px; 
-	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
-	background-color: rgba(85, 5, 96, 0.43);
 	outline: none;
 }
+
 .add-task-button:hover {
 	background-color: rgba(85, 5, 96, 0.83);
 }
@@ -166,27 +181,31 @@ body {
 	background-color: rgba(85, 5, 96, 0.83);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 }
+
 ul {
-	list-style-type: none;
 	margin: 0 10px 0 10px;
 	padding: 0;
+	list-style-type: none;
 }
+
 ul li {
-	cursor: pointer;
 	position: relative;
 	padding: 12px 8px 12px 10px;
 	font-size: 25px;
+	cursor: pointer;
 	transition: 0.2s;
 }
+
 ul li:hover {
 	background-color: rgba(85, 5, 96, 0.43);
 }
+
 ul li.checked {
-	transition: 0.5s;
-	color: rgba(72, 68, 68, 0.50);
+	color: rgb(149, 2, 18);
 	background: rgba(13, 66, 21, 0.50);
-	text-decoration: line-through;
+	transition: 0.5s;
 }
+
 ul li.checked:hover {
 	background: rgba(13, 66, 21, 0.80);
 }
@@ -198,49 +217,52 @@ ul li.checked:hover {
 	padding: 12px 16px 12px 16px;
 	border-radius: 5px;
 }
+
 .close:hover {
 	background-color: rgba(1, 48, 125, 0.67);	
 }
 
-
 .right-pad-pannel {
-	color: rgb(149, 2, 18);
+	height: calc( 100vh - 40px );;
+	width: 45%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	margin-left: auto;
 	margin-right: 10px;
-	height: calc( 100vh - 40px );;
-	width: 45%;
 	border-radius: 5px;
+	color: rgb(149, 2, 18);
 	background-color: rgba(17, 10, 18, 0.54);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.80);
 }
+
 .top-analog-calendar {
 	width: 100%;
 	height: 10%;
 }
+
 .date-calendar-clock {
 	display: flex;
 	width: 100%;
 	height: 40%;
 }
+
 #calendar {
 	width: 100%;
 	height: 100%;
 }
+
 table {
+	height: calc( 100% - 10px );
+	width: calc( 100% - 20px );
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	height: calc( 100% - 10px );
-	width: calc( 100% - 20px );
-/*	border-collapse: collapse;
-*/}
+}
 
 td,th {
-	border: 1px solid black;
 	padding: 3px;
 	text-align: center;
+	border: 1px solid black;
 }
 
 td:hover {
@@ -253,16 +275,17 @@ th {
 	font-weight: bold;
 	background-color: rgba(85, 5, 96, 0.43);
 }
+
 .clock {
 	width: 0%;
 	height: 100%;
 }
 
-#google-map-api {
+#google-map {
+	width: calc( 100% - 20px );
+	height: calc( 50% - 10px );
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
-	width: calc( 100% - 20px );
-	height: calc( 50% - 10px );
 	border-radius: 5px;
 }
