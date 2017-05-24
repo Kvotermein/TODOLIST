@@ -1,6 +1,8 @@
 'use strict'
 let now = new Date();
 let today = now.getDate()
+let tblElemTD = document.getElementsByTagName("td");
+
     function createCalendar(id, year, month) {
       var elem = document.getElementById(id);
 
@@ -42,14 +44,11 @@ let today = now.getDate()
     }
 
     function getDay(date) { // получить номер дня недели, от 0(пн) до 6(вс)
-      var day = date.getDay();
-      if (day == 0) day = 7;
-      return day - 1;
+      return (6 + date.getDay()) % 7;
     }
 
     createCalendar("calendar", now.getFullYear(), now.getMonth())
 
-  var tblElemTD = document.getElementsByTagName("TD");
   for (var i = 0; i < tblElemTD.length; i++) {
     if (String(today)===tblElemTD[i].textContent) {
       tblElemTD[i].style.color='blue';

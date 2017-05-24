@@ -29,7 +29,7 @@ function initMap() {
 					console.log('noGeo')
 			});
 	}
-
+	point = marker.getPosition()
 	google.maps.event.addListener(marker, "dragend", function(event) {
 		point = marker.getPosition();// новые координаты маркера: point.lat() и point.lng()
 		console.log(point.lat(),point.lng())

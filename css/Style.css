@@ -259,6 +259,7 @@ table {
 }
 
 td,th {
+	position: relative;
 	padding: 3px;
 	text-align: center;
 	border: 1px solid black;
@@ -273,6 +274,28 @@ td:hover {
 th {
 	font-weight: bold;
 	background-color: rgba(85, 5, 96, 0.43);
+}
+
+.notif {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 5px;
+	width: 5px;
+	background-color: red;
+	border: 1px solid blue;
+	border-radius: 50%;
+}
+
+.notif:hover {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 7px;
+	width: 7px;
+	background-color: red;
+	border: 1px solid blue;
+	border-radius: 50%;
 }
 
 .clock {

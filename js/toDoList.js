@@ -22,7 +22,7 @@ function loadall() {
   if (tasksArray.length !== 0) {
     for (var i = 0; i < tasksArray.length; i++) {
       console.log(tasksArray[i])
-      var li = document.createElement('li');;
+      var li = document.createElement('li');
       li.id = i;
       var t = document.createTextNode(tasksArray[i].task);
       li.appendChild(t);
@@ -45,7 +45,6 @@ function loadall() {
           tasksArray.splice(i,1);
         }
       }
-      console.log(tasksArray)
     }
   }
 
@@ -58,13 +57,21 @@ function loadall() {
           console.log(i)
           var x=tasksArray[i].coordx.toFixed(6);
           var y=tasksArray[i].coordy.toFixed(6);
-        setTimeout(function() { 
-          map.panTo(new google.maps.LatLng(x,y));
-          map.setZoom(13)
-          marker.setPosition(new google.maps.LatLng(x,y));
-        }, 300);
+          setTimeout(function() { 
+            map.panTo(new google.maps.LatLng(x,y));
+            map.setZoom(13)
+            marker.setPosition(new google.maps.LatLng(x,y));
+          }, 300);
         }
       }
+    }
+  }
+
+  for (var i = 0; i < tblElemTD.length; i++) {
+    if (tblElemTD[i].textContent in monthTaskHash ) {
+      var notif = document.createElement('div');
+      notif.setAttribute('class' , 'notif')
+      tblElemTD[i].appendChild(notif)
     }
   }
 
@@ -137,12 +144,10 @@ function newElement(posX,posY) {
 
 }
 
-var tblElemTD = document.getElementsByTagName('td');
 for (var i = 0; i < tblElemTD.length; i++) {
 
   tblElemTD[i].onclick = function() {
 
-     var tblElemTD = document.getElementsByTagName('yd');
       for (var i = 0; i < tblElemTD.length; i++) {
           tblElemTD[i].style.color='rgb(149, 2, 18)';
       }
@@ -153,7 +158,9 @@ for (var i = 0; i < tblElemTD.length; i++) {
     if (monthTaskHash[today]) {
       tasksArray=monthTaskHash[today]
     }
-    else tasksArray=[]
+    else {
+      tasksArray=[]
+    }
     loadall()
   }
 
