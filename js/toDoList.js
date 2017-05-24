@@ -78,7 +78,7 @@ function newElement(posX,posY) {
     li.id=i;
   }
 
-  var inputValue = document.getElementById('userTask').value;
+  var inputValue = document.getElementById('user-task').value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
   if (inputValue === '') {
@@ -87,7 +87,7 @@ function newElement(posX,posY) {
     document.getElementById('myUL').insertBefore(li,uLlist.firstChild);
   }
 
-  document.getElementById('userTask').value = '';
+  document.getElementById('user-task').value = '';
   var span = document.createElement('span');
   var txt = document.createTextNode('\u00D7');
   span.className = 'close';

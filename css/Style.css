@@ -150,7 +150,6 @@ body {
 	background-color: rgba(85, 5, 96, 0.43);
 	box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.50);
 	border-radius: 5px;
-	border: none;
 	transition: 0.5s;
 	outline: none;
 }
